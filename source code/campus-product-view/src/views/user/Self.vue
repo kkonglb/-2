@@ -5,7 +5,7 @@
         <label class="section-label">*头像</label>
         <el-upload 
           class="avatar-uploader" 
-          action="http://localhost:21090/api/campus-product-sys/v1.0/file/upload" 
+          action="http://123.56.187.166:21090/api/campus-product-sys/v1.0/file/upload" 
           :show-file-list="false"
           :on-success="handleAvatarSuccess">
           <img v-if="userAvatar" :src="userAvatar" class="avatar-image">

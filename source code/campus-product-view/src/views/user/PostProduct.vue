@@ -95,7 +95,7 @@
             <p class="upload-tip">建议上传1:1比例的图片，最多9张</p>
             
             <el-upload 
-              action="http://localhost:21090/api/campus-product-sys/v1.0/file/upload"
+              action="http://123.56.187.166:21090/api/campus-product-sys/v1.0/file/upload"
               list-type="picture-card"
               :limit="9"
               :on-success="handlePictureCardSuccess"

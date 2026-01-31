@@ -24,7 +24,7 @@
             <h2 class="card-title">封面图片</h2>
             <el-upload 
               class="avatar-uploader" 
-              action="http://localhost:21090/api/campus-product-sys/v1.0/file/upload"
+              action="http://123.56.187.166:21090/api/campus-product-sys/v1.0/file/upload"
               :show-file-list="false" 
               :on-success="handleAvatarSuccess">
               <img v-if="content.cover" :src="content.cover" class="avatar">

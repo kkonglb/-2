@@ -96,7 +96,7 @@
       :close-on-click-modal="false">
       <el-form label-width="80px">
         <el-form-item label="用户头像">
-          <el-upload class="avatar-uploader" action="http://localhost:21090/api/campus-product-sys/v1.0/file/upload"
+          <el-upload class="avatar-uploader" action="http://123.56.187.166:21090/api/campus-product-sys/v1.0/file/upload"
             :show-file-list="false" :on-success="handleAvatarSuccess">
             <img v-if="userAvatar" :src="userAvatar" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
