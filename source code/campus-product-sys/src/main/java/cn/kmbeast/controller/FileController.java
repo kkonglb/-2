@@ -23,10 +23,14 @@ import java.util.Map;
 @RequestMapping("/file")
 public class FileController {
 
+    @Value("${file.view-url}")
+    private String viewUrl;
+
+    @Value("${file.upload-path}")
+    private String fileUploadPath;
+
     @Value("${my-server.api-context-path}")
     private String API;
-
-    private final static String URL = "http://localhost:21090";
 
     /**
      * 文件上传
@@ -42,12 +46,12 @@ public class FileController {
         try {
             if (uploadFile(multipartFile, fileName)) {
                 rep.put("code", 200);
-                rep.put("data", URL + API+ "/file/getFile?fileName=" + fileName);
+                rep.put("data", viewUrl + API+ "/file/getFile?fileName=" + fileName);
                 return rep;
             }
         } catch (IOException e) {
             rep.put("code", 400);
-            rep.put("msg", "文件上传异常");
+            rep.put("msg", "文件上传异常"+e.getMessage().toString());
             return rep;
         }
         rep.put("code", 400);
@@ -95,8 +99,8 @@ public class FileController {
         return fileName(multipartFile, fileName);
     }
 
-    public static boolean fileName(MultipartFile multipartFile, String fileName) throws IOException {
-        File fileDir = new File(PathUtils.getClassLoadRootPath() + "/pic");
+    public boolean fileName(MultipartFile multipartFile, String fileName) throws IOException {
+        File fileDir = new File(fileUploadPath);
         if (!fileDir.exists()) {
             if (!fileDir.mkdirs()) {
                 return false;
@@ -125,7 +129,7 @@ public class FileController {
     @GetMapping("/getFile")
     public void getImage(@RequestParam("fileName") String imageName,
                          HttpServletResponse response) throws IOException {
-        File fileDir = new File(PathUtils.getClassLoadRootPath() + "/pic");
+        File fileDir = new File(fileUploadPath);
         File image = new File(fileDir.getAbsolutePath() + "/" + imageName);
         if (image.exists()) {
             FileInputStream fileInputStream = new FileInputStream(image);

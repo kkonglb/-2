@@ -6,6 +6,13 @@ server:
 # API地址前缀，用于接口拦截放行
 my-server:
   api-context-path: /api/campus-product-sys/v1.0
+
+# 文件配置
+file:
+  # 图片存储路径 (Windows本地测试可改为 D:/pic/，Linux生产环境保持 /www/wwwroot/...)
+  upload-path: /www/wwwroot/campus-product-sys/pic
+  # 图片访问前缀 (生产环境请改为服务器IP或域名，本地为http://localhost:21090，例如 http://47.xxx.xxx.xxx:21090)
+  view-url: http://123.56.187.166:21090 
 #MySQL与文件上传限制配置
 spring:
   servlet:
